@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('infoList');
-//});
+Route::get('/', function () {
+    return view('infoDetail');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -4,6 +4,12 @@ html {
   font-size: 100%;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 img {
   max-width: 100%;
   box-shadow: 0 0 8px gray;
@@ -62,6 +68,11 @@ a {
 .card-1 {
   margin: 0 auto;
   width: 45rem;
+}
+
+.card-2 {
+  margin: 0 auto;
+  width: 50rem;
 }
 
 /* タイトル */
@@ -247,6 +258,7 @@ a {
 /* フッター */
 
 footer {
+  margin-top: auto;
   padding-top: 3rem;
   padding-bottom: 3rem;
   border-top: dashed 4px #ababab;
@@ -327,6 +339,12 @@ footer p {
   }
 }
 
+@media (max-width: 900px) {
+  .card-2 {
+    width: 45rem;
+  }
+}
+
 @media (max-width: 800px) {
   .flex-box {
     -webkit-column-count: 2;
@@ -336,6 +354,10 @@ footer p {
 
   .card-1 {
     width: 30rem;
+  }
+
+  .card-2 {
+    width: 40rem;
   }
 }
 
@@ -347,6 +369,10 @@ footer p {
   }
 
   .card-1 {
+    width: 20rem;
+  }
+
+  .card-2 {
     width: 20rem;
   }
 
