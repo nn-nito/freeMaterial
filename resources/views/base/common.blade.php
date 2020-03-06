@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://kit.fontawesome.com/d687fb21f0.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,7 +20,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>

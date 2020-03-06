@@ -13,19 +13,41 @@
                 <div class="row detail-box">
                     <p>
                     <div class="col-sm-7 detail-image">
-                        <img src="storage/test2.jpg">
+                        <img src="{{ $photo_detail['filename'] }}">
                     </div>
                     <div class="col-sm-5 detail-text detail-list">
                         <ul>
-                            <li>投稿ユーザー：admin</li>
-                            <li>投稿日時：2019/10/10</li>
-                            <li>大きさ：1080×800</li>
+                            <li>投稿ユーザー：{{ $photo_detail['user_name'] }}</li>
+                            <li>投稿日時：{{ $photo_detail['post_date'] }}</li>
+                            <li>解像度：{{ $photo_detail['resolution'] }}</li>
+                            <li>ダウンロード数：{{ $photo_detail['download_count'] }}</li>
                         </ul>
-                        <p style="font-size: 3em;">
-                            <a href="https://web-camp.io/magazine/archives/10657" alt="" style="color: black;">
-                                <i class="fas fa-download"></i>
-                            </a>
-                        </p>
+
+                        <div class="d-flex flex-column">
+                            <div class="description">
+                                <div class="main-title">
+                                    <span>説明</span>
+                                </div>
+                                <div class="box11">
+                                    <span>
+                                        {{ $photo_detail['description'] }}
+                                    </span>
+                                </div>
+                            </div>
+                            <p style="font-size: 3em;">
+                                <a href="{{ $photo_detail['filename'] }}" download="success.jpg" alt="" style="color: black;">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </p>
+                        </div>
+                        {{--                        <p style="font-size: 3em;">--}}
+                        {{--                            <a href="{{ action('Photo') }}" alt="" style="color: black;">--}}
+                        {{--                                <i class="fas fa-download"></i>--}}
+                        {{--                            </a>--}}
+                        {{--                            <a href="{{ action('Photo') }}" alt="" style="color: black;">--}}
+                        {{--                                <i class="fas fa-download"></i>--}}
+                        {{--                            </a>--}}
+                        {{--                        </p>--}}
                     </div>
                     </p>
                 </div><!-- row -->

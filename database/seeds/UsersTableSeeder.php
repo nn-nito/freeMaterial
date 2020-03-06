@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class UsersTableSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 1,
+                'name' => '本',
                 'email' => 'aaaabbbbccc@gmail.com',
                 'password' => 'aj3tra4fad',
             ],
@@ -27,6 +28,7 @@ class UsersTableSeeder extends Seeder
                 'name' => $user['name'],
                 'email' => $user['email'],
                 'password' => $user['password'],
+                'created_at' => '2020-03-06 10:00:00',
             ]);
         }
     }

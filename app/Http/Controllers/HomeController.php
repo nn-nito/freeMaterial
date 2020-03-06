@@ -26,7 +26,7 @@ class HomeController extends Controller
 
         // 最新の写真を取得
         $photo_service = new PhotoService();
-        $photos = $photo_service->getPaginationByLatestMonth(30);
+        $photos = $photo_service->getPaginationByLatestMonth(5);
 
         return view('home', compact('infos', 'photos'));
     }

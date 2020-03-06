@@ -20,11 +20,18 @@ use Illuminate\Database\Eloquent\Collection;
 class InfoHandler
 {
     /**
+     * @var Info
+     */
+    private $info;
+
+
+
+    /**
      * InfoHandler constructor.
      */
     public function __construct()
     {
-
+        $this->info = new Info();
     }
 
 
@@ -37,7 +44,7 @@ class InfoHandler
      */
     public function fetchCollectionByLatest(int $count)
     {
-        return Info::query()
+        return $this->info::query()
             ->limit($count)
             ->orderByDesc('created_at')
             ->get();

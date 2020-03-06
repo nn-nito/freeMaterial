@@ -9,8 +9,12 @@
 namespace App\Http\Services;
 
 use App\Http\Handlers\PhotoHandler;
+use App\Photo;
 use Carbon\Carbon;
+use Faker\Provider\DateTime;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class PhotoService
@@ -46,5 +50,35 @@ class PhotoService
     {
         $this_month = Carbon::now()->month;
         return $this->photo_handler->fetchPaginationByLatestMonth($this_month, $pagination_count);
+    }
+
+
+
+    /**
+     * 写真の詳細情報を取得
+     *
+     * @param int $photo_id
+     * @return array
+     */
+    public function getPhotoDetail(int $photo_id): array
+    {
+        /** @var Photo $photo */
+        $photo = $this->photo_handler->fetchModelById($photo_id);
+        /** @var BelongsTo $user */
+        $user = $photo->User;
+
+        /** @var \DateTime $user_created_at */
+        $user_created_at = $user->created_at;
+        $post_date = $user_created_at->format('Y/m/d h:i');
+        $photo_detail = [
+            'filename' => $photo->filename,
+            'user_name' => $user->name,
+            'resolution' => $photo->resolution,
+            'description' => $photo->description,
+            'download_count' => $photo->download_count,
+            'post_date' => $post_date,
+        ];
+
+        return $photo_detail;
     }
 }

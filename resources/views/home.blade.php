@@ -132,7 +132,7 @@
             <div class="flex-box">
                 @foreach($photos as $photo)
                     <div class="grid hover1">
-                        <a href="https://web-camp.io/magazine/archives/10657" alt="">
+                        <a href="{{ action('PhotoDetailController@index', $photo->id) }}" alt="">
                             <img src="{{ $photo->filename }}" alt="">
                             <div class="mask">
                                 <div class="caption">
