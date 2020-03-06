@@ -36,6 +36,8 @@ class InfosTableSeeder extends Seeder
             ],
         ];
 
+        DB::table('infos')->delete();
+        DB::statement("ALTER TABLE infos AUTO_INCREMENT = 1;");
         foreach ($infos as $info) {
             DB::table('infos')->insert([
                 'title' => $info['title'],
