@@ -9,6 +9,7 @@
 namespace App\Http\Services;
 
 use App\Http\Handlers\InfoHandler;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -43,4 +44,17 @@ class InfoService
     {
         return $this->info_handler->fetchCollectionByLatest($count);
     }
+
+
+
+	/**
+	 * 最新のお知らせをページネーションで取得
+	 *
+	 * @param int $pagination_count
+	 * @return LengthAwarePaginator
+	 */
+	public function getPaginationByLatest(int $pagination_count): LengthAwarePaginator
+	{
+		return $this->info_handler->fetchPaginationByLatest($pagination_count);
+	}
 }

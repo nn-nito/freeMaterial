@@ -86,6 +86,11 @@
                     @endforeach
                 </ul>
             </div>
+            <div class="d-flex justify-content-center">
+                <a href="{{ action('InfoListController@index') }}" class="btn-border-bottom">
+                    <span>もっと見る</span>
+                </a>
+            </div>
         </div>
     </div>
 @endsection
