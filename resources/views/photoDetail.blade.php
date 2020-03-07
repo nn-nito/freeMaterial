@@ -13,7 +13,7 @@
                 <div class="row detail-box">
                     <p>
                     <div class="col-sm-7 detail-image">
-                        <img src="{{ $photo_detail['filename'] }}">
+                        <img src="{{ $photo_detail['url'] }}">
                     </div>
                     <div class="col-sm-5 detail-text detail-list">
                         <ul>
@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             <p style="font-size: 3em;">
-                                <a href="{{ $photo_detail['filename'] }}" download="success.jpg" alt="" style="color: black;">
+                                <a href="{{ action('DownloadPhotoController@index', $id) }}" alt="" style="color: black;">
                                     <i class="fas fa-download"></i>
                                 </a>
                             </p>

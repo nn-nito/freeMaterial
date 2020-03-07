@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/photos/{id}/detail', 'PhotoDetailController@index')->name('photo_detail');
+Route::get('/photos/{id}/download', 'DownloadPhotoController@index')->name('photo_download');

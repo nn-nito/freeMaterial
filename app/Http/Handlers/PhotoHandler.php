@@ -68,4 +68,19 @@ class PhotoHandler
         return $this->photo::query()
             ->find($photo_id);
     }
+
+
+
+	/**
+	 * ダウンロード数をインクリメント
+	 *
+	 * @param int $photo_id
+	 * @return int
+	 */
+    public function incrementDownloadCount(int $photo_id)
+	{
+		return $this->photo::query()
+			->where('id', $photo_id)
+			->increment('download_count');
+	}
 }

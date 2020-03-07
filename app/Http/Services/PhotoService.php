@@ -71,7 +71,7 @@ class PhotoService
         $user_created_at = $user->created_at;
         $post_date = $user_created_at->format('Y/m/d h:i');
         $photo_detail = [
-            'filename' => $photo->filename,
+            'url' => $photo->url,
             'user_name' => $user->name,
             'resolution' => $photo->resolution,
             'description' => $photo->description,

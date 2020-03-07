@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Photo extends Model
 {
+	protected $fillable = [
+		'download_count',
+	];
+
+
+
     /**
      * Userを取得
      *

@@ -133,7 +133,7 @@
                 @foreach($photos as $photo)
                     <div class="grid hover1">
                         <a href="{{ action('PhotoDetailController@index', $photo->id) }}" alt="">
-                            <img src="{{ $photo->filename }}" alt="">
+                            <img src="{{ $photo->url }}" alt="">
                             <div class="mask">
                                 <div class="caption">
                                     <p>投稿日時：{{ $photo->created_at }}</p>

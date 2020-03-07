@@ -16,7 +16,8 @@ class CreatePhotosTable extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('filename');
+			$table->string('url');
+			$table->string('filename');
             $table->unsignedInteger('download_count')->default(0);
             $table->string('description')->nullable();
             $table->string('resolution');
