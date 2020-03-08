@@ -35,40 +35,26 @@
 @section('top')
     <div class="top1 py3 bg-light">
         <div class="container" style="width: 60%">
-            <div id="carousel-2" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
+            <div id="carousel-2" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000000">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-2" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-2" data-slide-to="1"></li>
-                    <li data-target="#carousel-2" data-slide-to="2"></li>
-                    <li data-target="#carousel-2" data-slide-to="3"></li>
-                    <li data-target="#carousel-2" data-slide-to="4"></li>
+                    @foreach($popular_photos as $key => $popular_photo)
+                        <li data-target="#carousel-2" data-slide-to="{{ $key }}" class=" {{ 0 === $key ? 'active' :  'none'}}"></li>
+                    @endforeach
                 </ol>
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <a href="">
-                            <img src="https://photo-material-free.s3.ap-northeast-1.amazonaws.com/photo_20200305_1_2.png" alt="responsive image" class="d-block img-fluid">
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="">
-                            <img src="https://photo-material-free.s3.ap-northeast-1.amazonaws.com/photo_20200305_1_1.jpg" alt="responsive image" class="d-block img-fluid">
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="">
-                            <img src="https://photo-material-free.s3.ap-northeast-1.amazonaws.com/photo_20200305_1_3.jpg" alt="responsive image" class="d-block img-fluid">
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="">
-                            <img src="https://photo-material-free.s3.ap-northeast-1.amazonaws.com/photo_20200305_1_3.jpg" alt="responsive image" class="d-block img-fluid">
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="">
-                            <img src="https://photo-material-free.s3.ap-northeast-1.amazonaws.com/photo_20200305_1_3.jpg" alt="responsive image" class="d-block img-fluid">
-                        </a>
-                    </div>
+                    @foreach($popular_photos as $key => $popular_photo)
+                        <div class="carousel-item {{ 0 === $key ? 'active' :  'none'}}">
+                            <a href="{{ action('PhotoDetailController@index', $popular_photo->id) }}" class="hover1">
+                                <img src="{{ $popular_photo->url }}" alt="responsive image" class="d-block img-fluid">
+                                <div class="mask">
+                                    <div class="caption">
+                                        <p>投稿日時：{{ $popular_photo->created_at }}</p>
+                                        <p>画像クリックで詳細</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
