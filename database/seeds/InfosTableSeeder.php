@@ -13,15 +13,17 @@ class InfosTableSeeder extends Seeder
 	 */
 	public function run()
 	{
+		$body = "10枚の写真を追加しましたよ。ああああああああああ\r\n　10枚の写真を追加しましたよ。ああああああああああ\r\n10枚の写真を追加しましたよ。ああああああああああ\r\n10枚の写真を追加しましたよ。ああああああああああ\r\n10枚の写真を追加しましたよ。ああああああああああ\r\n";
 		$infos = [
 			[
 				'title' => '更新がありました',
-				'body' => 'っっっっっっっっあああ',
+				'body' => nl2br($body),
 				'target_date' => Carbon::now()->format('Y-m-d'),
 				'created_at' => '2020-03-06 10:00:00',
 			],
 			[
 				'title' => '100枚追加しました',
+				'body' => nl2br($body),
 				'created_at' => '2020-03-01 10:00:00',
 			],
 			[
