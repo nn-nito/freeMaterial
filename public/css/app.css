@@ -52,13 +52,6 @@ a {
   max-width: 40rem;
 }
 
-/* カルーセル */
-
-#carousel-1 {
-  width: 80%;
-  margin: 0px auto;
-}
-
 .badge {
   margin: 2px 2px;
 }
@@ -167,6 +160,25 @@ a {
   page-break-inside: avoid;
   -moz-column-break-inside: avoid;
        break-inside: avoid;
+}
+
+.carousel-item .img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+.carousel-item {
+  height: auto;
+}
+
+.carousel-item a {
+  display: block;
+  width: 100%;
+}
+
+.carousel-item .show-image {
+  display: block;
+  width: 100%;
 }
 
 /* ボタン */

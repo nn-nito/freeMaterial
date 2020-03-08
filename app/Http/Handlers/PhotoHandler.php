@@ -83,4 +83,24 @@ class PhotoHandler
 			->where('id', $photo_id)
 			->increment('download_count');
 	}
+
+
+
+	/**
+	 * 人気の写真
+	 *
+	 * @param array    $popular_photo_ids
+	 * @param int|null $limit
+	 * @return Builder[]|Collection
+	 */
+	public function fetchCollectionByPopularPhotoIds(array $popular_photo_ids, ?int $limit = null)
+	{
+		$query = $this->photo::query();
+		if (false === is_null($limit)) {
+			$query->limit($limit);
+		}
+		return $query
+			->whereIn('id', $popular_photo_ids)
+			->get();
+	}
 }

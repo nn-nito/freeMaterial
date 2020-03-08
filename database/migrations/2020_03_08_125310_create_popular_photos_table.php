@@ -17,6 +17,7 @@ class CreatePopularPhotosTable extends Migration
 			$table->id();
 			$table->unsignedBigInteger('photo_id');
 			$table->unsignedInteger('rank');
+			$table->timestamps();
 
 			$table->foreign('photo_id')->references('id')->on('photos');
 		});

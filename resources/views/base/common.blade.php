@@ -63,8 +63,8 @@
     {{-- 表題 --}}
     @yield('jumbotron')
 
-    {{-- カルーセル --}}
-    @yield('carousel')
+    {{-- トップ --}}
+    @yield('top')
 
     <!-- お知らせ -->
     @yield('info')

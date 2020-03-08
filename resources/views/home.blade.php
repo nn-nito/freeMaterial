@@ -31,29 +31,44 @@
     </section>
 @endsection
 
-{{-- カルーセル --}}
-@section('carousel')
-    <div class="carousel py-4 bg-light">
-        <div class="container">
-            <div id="carousel-1" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
+{{-- トップ --}}
+@section('top')
+    <div class="top1 py3 bg-light">
+        <div class="container" style="width: 60%">
+            <div id="carousel-2" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-2" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-2" data-slide-to="1"></li>
+                    <li data-target="#carousel-2" data-slide-to="2"></li>
+                    <li data-target="#carousel-2" data-slide-to="3"></li>
+                    <li data-target="#carousel-2" data-slide-to="4"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="storage/test2.jpg" alt="First slide">
+                        <a href="">
+                            <img src="https://photo-material-free.s3.ap-northeast-1.amazonaws.com/photo_20200305_1_2.png" alt="responsive image" class="d-block img-fluid">
+                        </a>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="storage/test2.jpg" alt="Second slide">
+                        <a href="">
+                            <img src="https://photo-material-free.s3.ap-northeast-1.amazonaws.com/photo_20200305_1_1.jpg" alt="responsive image" class="d-block img-fluid">
+                        </a>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="storage/test2.jpg" alt="Third slide">
+                        <a href="">
+                            <img src="https://photo-material-free.s3.ap-northeast-1.amazonaws.com/photo_20200305_1_3.jpg" alt="responsive image" class="d-block img-fluid">
+                        </a>
                     </div>
-                    <a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="carousel-item">
+                        <a href="">
+                            <img src="https://photo-material-free.s3.ap-northeast-1.amazonaws.com/photo_20200305_1_3.jpg" alt="responsive image" class="d-block img-fluid">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="">
+                            <img src="https://photo-material-free.s3.ap-northeast-1.amazonaws.com/photo_20200305_1_3.jpg" alt="responsive image" class="d-block img-fluid">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
