@@ -12,6 +12,7 @@ use App\Info;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class InfoHandler
@@ -64,5 +65,18 @@ class InfoHandler
 		return $this->info::query()
 			->orderByDesc('created_at')
 			->paginate($pagination_count);
+	}
+
+
+
+	/**
+	 * インフォIDに紐づくモデルを取得
+	 *
+	 * @param int $info_id
+	 * @return Builder|Builder[]|Collection|Model|null
+	 */
+	public function fetchModelById(int $info_id)
+	{
+		return $this->info::query()->find($info_id);
 	}
 }

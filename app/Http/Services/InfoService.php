@@ -12,6 +12,7 @@ use App\Http\Handlers\InfoHandler;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class InfoService
@@ -56,5 +57,18 @@ class InfoService
 	public function getPaginationByLatest(int $pagination_count): LengthAwarePaginator
 	{
 		return $this->info_handler->fetchPaginationByLatest($pagination_count);
+	}
+
+
+
+	/**
+	 * インフォIDに紐づくモデルを取得
+	 *
+	 * @param int $info_id
+	 * @return Builder|Builder[]|Collection|Model|null
+	 */
+	public function getModelById(int $info_id)
+	{
+		return $this->info_handler->fetchModelById($info_id);
 	}
 }

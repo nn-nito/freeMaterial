@@ -11,13 +11,15 @@
         <div class="container">
             <div class="card card-2">
                 <div class="card-header bg-dark">
-                    <h3 style="text-align: center; font-weight: bold; color: #EEEEEE;">タイトル</h3>
+                    <h3 style="text-align: center; font-weight: bold; color: #67c5ff;">{{ $info->title }}</h3>
                 </div>
-                <div class="card-body">
-                    <span style="font-size: 120%">
-                        あああああああああああああああああああああ<br>
-                        　ああああ
-                    </span>
+                <div class="card-body" style="font-size: 130%;">
+                    <span>{!! $info->body !!}</span>
+                    @if (false === isset($info->body))
+                        <span style="display: inline-block; width: 100%; text-align: center; font-size: 180%;">
+                            詳細無し
+                        </span>
+                    @endif
                 </div>
             </div>
         </div>

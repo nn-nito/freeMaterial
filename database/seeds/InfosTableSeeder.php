@@ -17,13 +17,13 @@ class InfosTableSeeder extends Seeder
 		$infos = [
 			[
 				'title' => '更新がありました',
-				'body' => nl2br($body),
+				'body' => nl2br($body, false),
 				'target_date' => Carbon::now()->format('Y-m-d'),
 				'created_at' => '2020-03-06 10:00:00',
 			],
 			[
 				'title' => '100枚追加しました',
-				'body' => nl2br($body),
+				'body' => nl2br($body, false),
 				'created_at' => '2020-03-01 10:00:00',
 			],
 			[

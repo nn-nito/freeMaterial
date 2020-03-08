@@ -13,11 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('infoDetail');
-});
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/photos/{id}/detail', 'PhotoDetailController@index')->name('photo_detail');
 Route::get('/photos/{id}/download', 'DownloadPhotoController@index')->name('photo_download');
 Route::get('/infos', 'InfoListController@index')->name('info_list');
+Route::get('/infos/{id}/detail', 'InfoDetailController@index')->name('info_detail');
