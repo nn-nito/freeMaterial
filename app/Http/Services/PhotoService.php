@@ -111,4 +111,18 @@ class PhotoService
 	{
 		return $this->photo_handler->fetchPaginationSortDesc($pagination_count);
 	}
+
+
+
+	/**
+	 * 期間でフィルタリングして人気の写真をページネーションで取得
+	 *
+	 * @param int $pagination_count
+	 * @param string $period '':総ダウンロード数 weekly:週間ダウンロード数 monthly:月間ダウンロード数
+	 * @return LengthAwarePaginator
+	 */
+	public function getPaginationByPeriod(int $pagination_count, string $period = ''): LengthAwarePaginator
+	{
+		return $this->photo_handler->fetchPaginationByPeriod($pagination_count, $period);
+	}
 }

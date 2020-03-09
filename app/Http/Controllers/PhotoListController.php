@@ -14,14 +14,25 @@ use Illuminate\View\View;
  */
 class PhotoListController extends Controller
 {
+	private const PAGINATION_COUNT = 3;
+
+
+
 	/**
 	 * @param string $tag
-	 * @param int    $period
+	 * @param string|null $period
 	 * @return Factory|View
 	 */
-    public function index(string $tag, int $period)
+	public function index(string $tag, ?string $period = null)
 	{
 		$photo_service = new PhotoService();
-		return view('photoList', compact());
+		$photo_list = null;
+		if ('tag_all' === $tag && is_null($period) ) {
+			$photo_list = $photo_service->getPaginationSortDesc(self::PAGINATION_COUNT);
+		} else {
+			$photo_list = $photo_service->getPaginationByPeriod(self::PAGINATION_COUNT, $period);
+		}
+
+		return view('photoList', compact('photo_list'));
 	}
 }

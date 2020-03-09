@@ -118,4 +118,20 @@ class PhotoHandler
 			->orderByDesc('created_at')
 			->paginate($pagination_count);
 	}
+
+
+
+	/**
+	 * 期間でフィルタリングして人気の写真をページネーションで取得
+	 *
+	 * @param int $pagination_count
+	 * @param string $period '':総ダウンロード数 weekly:週間ダウンロード数 monthly:月間ダウンロード数
+	 * @return LengthAwarePaginator
+	 */
+	public function fetchPaginationByPeriod(int $pagination_count, string $period = ''): LengthAwarePaginator
+	{
+		return $this->photo::query()
+			->orderByDesc('download_count' . $period)
+			->paginate($pagination_count);
+	}
 }

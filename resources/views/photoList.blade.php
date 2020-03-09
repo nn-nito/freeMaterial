@@ -33,7 +33,7 @@
 
 {{-- 写真 --}}
 @section('photo')
-    <div class="free-images py-5 bg-light">
+    <div class="free-images py-5">
         <div class="container">
             <div class="main-title">
                 <h3><span>新着画像</span></h3>
@@ -42,88 +42,24 @@
 
         <div class="container-fluid">
             <div class="flex-box">
-
-                <div class="grid hover1">
-                    <a href="https://web-camp.io/magazine/archives/10657" alt="">
-                        <img src="storage/phone.jpg">
-                        <div class="mask">
-                            <div class="caption">
-                                <p>投稿日時：2019/03/02 10:00:00</p>
-                                <p>画像クリックで詳細</p>
+                @foreach($photo_list as $photo)
+                    <div class="grid hover1">
+                        <a href="{{ action('PhotoDetailController@index', $photo->id) }}" alt="">
+                            <img src="{{ $photo->url }}">
+                            <div class="mask">
+                                <div class="caption">
+                                    <p>投稿日時：{{ $photo->created_at->format('Y/m/d h:i') }}</p>
+                                    <p>画像クリックで詳細</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="grid hover1">
-                    <a href="https://web-camp.io/magazine/archives/10657" alt="">
-                        <img src="storage/test2.jpg">
-                        <div class="mask">
-                            <div class="caption">
-                                <p>投稿日時：2019/03/02 10:00:00</p>
-                                <p>画像クリックで詳細</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="grid hover1">
-                    <a href="https://web-camp.io/magazine/archives/10657" alt="">
-                        <img src="storage/test.png">
-                        <div class="mask">
-                            <div class="caption">
-                                <p>投稿日時：2019/03/02 10:00:00</p>
-                                <p>画像クリックで詳細</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="grid hover1">
-                    <a href="https://web-camp.io/magazine/archives/10657" alt="">
-                        <img src="storage/phone.jpg">
-                        <div class="mask">
-                            <div class="caption">
-                                <p>投稿日時：2019/03/02 10:00:00</p>
-                                <p>画像クリックで詳細</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="grid hover1">
-                    <a href="https://web-camp.io/magazine/archives/10657" alt="">
-                        <img src="storage/test2.jpg">
-                        <div class="mask">
-                            <div class="caption">
-                                <p>投稿日時：2019/03/02 10:00:00</p>
-                                <p>画像クリックで詳細</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="grid hover1">
-                    <a href="https://web-camp.io/magazine/archives/10657" alt="">
-                        <img src="storage/phone.jpg">
-                        <div class="mask">
-                            <div class="caption">
-                                <p>投稿日時：2019/03/02 10:00:00</p>
-                                <p>画像クリックで詳細</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                @endforeach
             </div><!-- flexbox -->
             <!-- ページネーション -->
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled"><a class="page-link" href="#">Prev</a></li>
-                    <li class="page-item active">
-                <span class="page-link">
-                  1<span class="sr-only">(current)</span>
-                </span>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav><!-- Page -->
+            <div class="d-flex justify-content-center">
+                {{ $photo_list->links() }}
+            </div>
         </div><!-- container-fluid-->
     </div>
 @endsection

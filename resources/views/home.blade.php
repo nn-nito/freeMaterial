@@ -13,7 +13,7 @@
             <dev class="title-row d-flex-column justify-content-end  text-center">
                 <p class="lead text-muted">自然・風景・夜景などを主が適当に撮った写真をまとめたサイトになります。なので公序良俗に反した使い方でなければいろいろな場面でお使いいただいても構いません。</p>
                 <p>
-                    <a href="#" class="btn-top-radius mx-1">画像一覧</a>
+                    <a href="{{ action('PhotoListController@index', ['tag_all']) }}" class="btn-top-radius mx-1">画像一覧</a>
                     <a href="#" class="btn-top-radius mx-1">タグ一覧</a>
                     <a href="#" class="btn-top-radius mx-1">お知らせ一覧</a>
                     <a href="#" class="btn-top-radius mx-1">サイトについて</a>
