@@ -35,8 +35,33 @@
 @section('photo')
     <div class="free-images py-5">
         <div class="container">
-            <div class="main-title">
-                <h3><span>新着画像</span></h3>
+            <div class="d-flex justify-content-center">
+                <div class="tagtag">
+                    <a style="font-size: 300%">{{ ('tag_all' === $tag) ? 'すべて' : $tag}}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-2">
+            <div class="sort-contents">
+                <div class="d-flex justify-content-center">
+                    <form method="GET" action="{{action('PhotoListController@index', [$tag])}}" class="btn-vertical-border2">
+                        <input id="sort-new" class="soa" type="submit" name="sort" {{ (is_null($period)) ? 'disabled' : '' }}>
+                        <label class="label-sort" for="sort-new" style="font-size: 170%;  {{ (is_null($period)) ? 'color:#e74c3c;' : '' }}">新着</label>
+                    </form>
+                    <form method="GET" action="{{action('PhotoListController@index', [$tag, 'total'])}}" class="btn-vertical-border2">
+                        <input id="sort-total" class="soa" type="submit" name="sort" {{ ('total' === $period) ? 'disabled' : '' }}>
+                        <label class="label-sort" for="sort-total" style="font-size: 170%;  {{ ('total' === $period) ? 'color:#e74c3c;' : '' }}">総合人気</label>
+                    </form>
+                    <form method="GET" action="{{action('PhotoListController@index', [$tag, 'monthly'])}}" class="btn-vertical-border2">
+                        <input id="sort-monthly" class="soa" type="submit" name="sort" {{ ('monthly' === $period) ? 'disabled' : '' }}>
+                        <label class="label-sort" for="sort-monthly" style="font-size: 170%;  {{ ('monthly' === $period) ? 'color:#e74c3c;' : '' }}">月間人気</label>
+                    </form>
+                    <form method="GET" action="{{action('PhotoListController@index', [$tag, 'weekly'])}}" class="btn-vertical-border2">
+                        <input id="sort-weekly" class="soa" type="submit" name="sort" {{ ('weekly' === $period) ? 'disabled' : '' }}>
+                        <label class="label-sort" for="sort-weekly" style="font-size: 170%; {{ ('weekly' === $period) ? 'color:#e74c3c;' : '' }}">週間人気</label>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -57,7 +82,7 @@
                 @endforeach
             </div><!-- flexbox -->
             <!-- ページネーション -->
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center py-3">
                 {{ $photo_list->links() }}
             </div>
         </div><!-- container-fluid-->

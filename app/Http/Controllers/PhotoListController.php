@@ -30,9 +30,11 @@ class PhotoListController extends Controller
 		if ('tag_all' === $tag && is_null($period) ) {
 			$photo_list = $photo_service->getPaginationSortDesc(self::PAGINATION_COUNT);
 		} else {
-			$photo_list = $photo_service->getPaginationByPeriod(self::PAGINATION_COUNT, $period);
+			// 総合人気の時はクエリの都合上中身を空にする
+			$tmp_period = ('total' === $period) ? '' : $period;
+			$photo_list = $photo_service->getPaginationByPeriod(self::PAGINATION_COUNT, $tmp_period);
 		}
 
-		return view('photoList', compact('photo_list'));
+		return view('photoList', compact('photo_list', 'tag', 'period'));
 	}
 }

@@ -1,0 +1,26 @@
+.tagtag a {
+  display: inline-block;
+  margin: 0 .1em .6em 0;
+  padding: .6em;
+  line-height: 1;
+  text-decoration: none;
+  color: #ababab;
+  background-color: #fff;
+  border: 2px solid #ababab;
+  border-radius: 2em;
+}
+.tagtag a:before {
+  content: "#";
+}
+
+.husen a {
+  display: inline-block;
+  margin: 0 .1em .6em 0;
+  padding: .6em;
+  line-height: 1;
+  text-decoration: none;
+  color: #0000ee;
+  background-color: #fff;
+  border: 1px solid #0000ee;
+  border-left: 5px solid #0000ee;
+}

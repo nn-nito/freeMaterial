@@ -1,0 +1,34 @@
+:root {
+  --color-red: #e74c3c;
+  --color-blue: #3498db;
+  --color-yellow: #f1c40f;
+}
+.sort-contents {
+  padding: 1em;
+  text-align: center;
+}
+input[name="sort"] {
+  display: none;
+}
+.label-sort {
+  display: inline-block;
+  margin: 0 1em;
+  font-size: 1.2rem;
+  font-weight: 300;
+  cursor: pointer;
+}
+.soa {
+  margin-bottom: 2px;
+}
+.label-sort:hover,
+input[name="sort"]:checked + label {
+  color: #000;
+  margin-bottom: -2px;
+  border-bottom: 2px solid currentColor;
+}
+input[name="sort"]:checked + label {
+  cursor: default;
+}
+input[name="sort"][disabled]{
+  color:#27864f;
+}

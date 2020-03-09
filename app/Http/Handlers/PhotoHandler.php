@@ -99,6 +99,9 @@ class PhotoHandler
 		if (false === is_null($limit)) {
 			$query->limit($limit);
 		}
+		if ('' !== $period) {
+			$period = ('_' . $period);
+		}
 		return $query
 			->orderByDesc('download_count' . $period)
 			->get();
@@ -130,6 +133,10 @@ class PhotoHandler
 	 */
 	public function fetchPaginationByPeriod(int $pagination_count, string $period = ''): LengthAwarePaginator
 	{
+		if ('' !== $period) {
+			$period = ('_' . $period);
+		}
+
 		return $this->photo::query()
 			->orderByDesc('download_count' . $period)
 			->paginate($pagination_count);
