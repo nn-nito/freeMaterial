@@ -93,7 +93,7 @@ class PhotoHandler
 	 * @param int|null $limit
 	 * @return Builder[]|Collection
 	 */
-	public function fetchCollectionByPopularPhotoIds(string $period = '', ?int $limit = null)
+	public function fetchCollectionByPeriod(string $period = '', ?int $limit = null)
 	{
 		$query = $this->photo::query();
 		if (false === is_null($limit)) {
@@ -102,5 +102,20 @@ class PhotoHandler
 		return $query
 			->orderByDesc('download_count' . $period)
 			->get();
+	}
+
+
+
+	/**
+	 * 新着順にソートされているページネーションを取得する
+	 *
+	 * @param int $pagination_count
+	 * @return LengthAwarePaginator
+	 */
+	public function fetchPaginationSortDesc(int $pagination_count): LengthAwarePaginator
+	{
+		return $this->photo::query()
+			->orderByDesc('created_at')
+			->paginate($pagination_count);
 	}
 }

@@ -94,8 +94,21 @@ class PhotoService
 	 * @param int|null $photo_limit_count
 	 * @return Builder[]|Collection
 	 */
-	public function getCollectionByPopularPhotoIds(string $period = '', ?int $photo_limit_count = null)
+	public function getCollectionByPeriod(string $period = '', ?int $photo_limit_count = null)
 	{
-		return $this->photo_handler->fetchCollectionByPopularPhotoIds($period, $photo_limit_count);
+		return $this->photo_handler->fetchCollectionByPeriod($period, $photo_limit_count);
+	}
+
+
+
+	/**
+	 * 新着順にソートされているページネーションを取得する
+	 *
+	 * @param int $pagination_count
+	 * @return LengthAwarePaginator
+	 */
+	public function getPaginationSortDesc(int $pagination_count): LengthAwarePaginator
+	{
+		return $this->photo_handler->fetchPaginationSortDesc($pagination_count);
 	}
 }
