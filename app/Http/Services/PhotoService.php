@@ -88,16 +88,14 @@ class PhotoService
 
 
 	/**
-	 * 人気の写真取得
+	 * 期間でフィルタリングして人気の写真取得
 	 *
+	 * @param string   $period '':総ダウンロード数 weekly:週間ダウンロード数 monthly:月間ダウンロード数
 	 * @param int|null $photo_limit_count
 	 * @return Builder[]|Collection
 	 */
-	public function getCollectionByPopularPhotoIds(?int $photo_limit_count = null)
+	public function getCollectionByPopularPhotoIds(string $period = '', ?int $photo_limit_count = null)
 	{
-		$popular_photo_handler = new PopularPhotoHandler();
-		$popular_photos = $popular_photo_handler->fetchDescCollectionBySpecificColumn(['photo_id'])->toArray();
-
-		return $this->photo_handler->fetchCollectionByPopularPhotoIds($popular_photos, $photo_limit_count);
+		return $this->photo_handler->fetchCollectionByPopularPhotoIds($period, $photo_limit_count);
 	}
 }

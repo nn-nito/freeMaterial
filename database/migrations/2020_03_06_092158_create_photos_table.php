@@ -18,7 +18,9 @@ class CreatePhotosTable extends Migration
             $table->unsignedBigInteger('user_id');
 			$table->string('url');
 			$table->string('filename');
-            $table->unsignedInteger('download_count')->default(0);
+			$table->unsignedInteger('download_count')->default(0);
+			$table->unsignedInteger('download_count_weekly')->default(0);
+			$table->unsignedInteger('download_count_monthly')->default(0);
             $table->string('description')->nullable();
             $table->string('resolution');
             $table->timestamps();

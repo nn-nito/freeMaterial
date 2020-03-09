@@ -23,51 +23,51 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class PhotoHandler
 {
-    /**
-     * @var Photo
-     */
-    private $photo;
+	/**
+	 * @var Photo
+	 */
+	private $photo;
 
 
 
-    /**
-     * PhotoHandler constructor.
-     */
-    public function __construct()
-    {
-        $this->photo = new Photo();
-    }
+	/**
+	 * PhotoHandler constructor.
+	 */
+	public function __construct()
+	{
+		$this->photo = new Photo();
+	}
 
 
 
-    /**
-     * 最新の月の写真をページネーションで取得
-     *
-     * @param int $this_month
-     * @param int $pagination_count
-     * @return LengthAwarePaginator
-     */
-    public function fetchPaginationByLatestMonth(int $this_month, int $pagination_count): LengthAwarePaginator
-    {
-        return $this->photo::query()
-            ->whereMonth('created_at', $this_month)
-            ->orderByDesc('created_at')
-            ->paginate($pagination_count);
-    }
+	/**
+	 * 最新の月の写真をページネーションで取得
+	 *
+	 * @param int $this_month
+	 * @param int $pagination_count
+	 * @return LengthAwarePaginator
+	 */
+	public function fetchPaginationByLatestMonth(int $this_month, int $pagination_count): LengthAwarePaginator
+	{
+		return $this->photo::query()
+			->whereMonth('created_at', $this_month)
+			->orderByDesc('created_at')
+			->paginate($pagination_count);
+	}
 
 
 
-    /**
-     * idに紐づくモデルを取得
-     *
-     * @param int $photo_id
-     * @return Builder|Builder[]|Collection|Model|null
-     */
-    public function fetchModelById(int $photo_id)
-    {
-        return $this->photo::query()
-            ->find($photo_id);
-    }
+	/**
+	 * idに紐づくモデルを取得
+	 *
+	 * @param int $photo_id
+	 * @return Builder|Builder[]|Collection|Model|null
+	 */
+	public function fetchModelById(int $photo_id)
+	{
+		return $this->photo::query()
+			->find($photo_id);
+	}
 
 
 
@@ -77,7 +77,7 @@ class PhotoHandler
 	 * @param int $photo_id
 	 * @return int
 	 */
-    public function incrementDownloadCount(int $photo_id)
+	public function incrementDownloadCount(int $photo_id)
 	{
 		return $this->photo::query()
 			->where('id', $photo_id)
@@ -87,20 +87,20 @@ class PhotoHandler
 
 
 	/**
-	 * 人気の写真
+	 * 期間でフィルタリングして人気の写真取得
 	 *
-	 * @param array    $popular_photo_ids
+	 * @param string   $period '':総ダウンロード数 weekly:週間ダウンロード数 monthly:月間ダウンロード数
 	 * @param int|null $limit
 	 * @return Builder[]|Collection
 	 */
-	public function fetchCollectionByPopularPhotoIds(array $popular_photo_ids, ?int $limit = null)
+	public function fetchCollectionByPopularPhotoIds(string $period = '', ?int $limit = null)
 	{
 		$query = $this->photo::query();
 		if (false === is_null($limit)) {
 			$query->limit($limit);
 		}
 		return $query
-			->whereIn('id', $popular_photo_ids)
+			->orderByDesc('download_count' . $period)
 			->get();
 	}
 }

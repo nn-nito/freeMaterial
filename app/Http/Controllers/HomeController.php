@@ -29,7 +29,7 @@ class HomeController extends Controller
         $photos = $photo_service->getPaginationByLatestMonth(5);
 
         // 人気の写真を取得
-		$popular_photos = $photo_service->getCollectionByPopularPhotoIds(5);
+		$popular_photos = $photo_service->getCollectionByPopularPhotoIds('', 5);
 
         return view('home', compact('infos', 'photos', 'popular_photos'));
     }
