@@ -7,28 +7,22 @@
 
 @section('tags')
     <div class="image-detail">
-        <div class="container">
-            <div class="box26">
-                <div class="box-title">タグ一覧</div>
-                <div class="tag" style="margin-top: 10px;">
-                    <a href="#" class="badge badge-primary"><h5>風景</h5></a>
-                    <a href="#" class="badge badge-secondary"><h5>自然</h5></a>
-                    <a href="#" class="badge badge-success"><h5>Success</h5></a>
-                    <a href="#" class="badge badge-danger"><h5>Success</h5></a>
-                    <a href="#" class="badge badge-warning"><h5>Success</h5></a>
-                    <a href="#" class="badge badge-info"><h5>Success</h5></a>
-                    <a href="#" class="badge badge-info"><h5>Success</h5></a>
-                    <a href="#" class="badge badge-dark"><h5>Dark</h5></a>
-                    <a href="#" class="badge badge-dark"><h5>Dark</h5></a>
-                    <a href="#" class="badge badge-dark"><h5>Dark</h5></a>
-                    <a href="#" class="badge badge-dark"><h5>Dark</h5></a>
-                    <a href="#" class="badge badge-dark"><h5>Dark</h5></a>
-                    <a href="#" class="badge badge-dark"><h5>Dark</h5></a>
-                    <a href="#" class="badge badge-dark"><h5>Dark</h5></a>
-                    <a href="#" class="badge badge-dark"><h5>Dark</h5></a>
-                    <a href="#" class="badge badge-dark"><h5>Dark</h5></a>
-                </div><!-- tag -->
-            </div><!-- box29 -->
+        <h1 class="container">
+            <h1 class="display-4" style="text-align: center">タグ一覧</h1>
+            <div class="d-flex justify-content-center py-4">
+                @foreach($tags as $key => $tag)
+                    <div class="box11" style="margin: 0 0 10px 10px">
+                        <p style="text-align: center; font-size: 140%"><strong>{{ $key }}</strong></p>
+                        @foreach($tag as $item)
+                            <div class="tagtag">
+                                <a href="#" style="text-align: center; font-size: 110%">
+                                    {{ $item->name }} ({{$item->related_photo_count}})
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            </div>
         </div><!-- container -->
     </div><!-- image-detail -->
 @endsection

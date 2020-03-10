@@ -19,3 +19,4 @@ Route::get('/photos/{id}/download', 'DownloadPhotoController@index')->name('phot
 Route::get('/infos', 'InfoListController@index')->name('info_list');
 Route::get('/infos/{id}/detail', 'InfoDetailController@index')->name('info_detail');
 Route::get('/photos/{tag}/{period?}', 'PhotoListController@index')->name('photo_list');
+Route::get('/tags', 'TagListController@index')->name('tag_list');
