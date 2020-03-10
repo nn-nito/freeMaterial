@@ -16,30 +16,42 @@ class PhotoTagsTableSeeder extends Seeder
 			[
 				'photo_id' => '1',
 				'tag_id' => '1',
+				'name' => '自然',
 			],
 			[
 				'photo_id' => '1',
 				'tag_id' => '4',
+				'name' => '人',
 			],
 			[
 				'photo_id' => '2',
 				'tag_id' => '4',
+				'name' => '人',
 			],
 			[
 				'photo_id' => '4',
 				'tag_id' => '1',
+				'name' => '自然',
 			],
 			[
 				'photo_id' => '1',
 				'tag_id' => '2',
+				'name' => '山',
 			],
 			[
 				'photo_id' => '4',
 				'tag_id' => '4',
+				'name' => '人',
 			],
 			[
 				'photo_id' => '4',
 				'tag_id' => '5',
+				'name' => '空',
+			],
+			[
+				'photo_id' => '4',
+				'tag_id' => '3',
+				'name' => '海',
 			],
 		];
 
@@ -50,6 +62,7 @@ class PhotoTagsTableSeeder extends Seeder
 			$db->insert([
 				'photo_id' => $photo_tag['photo_id'],
 				'tag_id' => $photo_tag['tag_id'],
+				'name' => $photo_tag['name'],
 			]);
 		}
 	}

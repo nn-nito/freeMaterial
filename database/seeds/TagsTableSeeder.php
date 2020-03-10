@@ -16,27 +16,27 @@ class TagsTableSeeder extends Seeder
 			[
 				'name' => '自然',
 				'name_kana' => 'しぜん',
-				'related_photo_count' => 1,
+				'related_photo_count' => 2,
 			],
 			[
 				'name' => '山',
 				'name_kana' => 'やま',
-				'related_photo_count' => 5,
+				'related_photo_count' => 1,
 			],
 			[
 				'name' => '海',
 				'name_kana' => 'うみ',
-				'related_photo_count' => 2,
+				'related_photo_count' => 1,
 			],
 			[
 				'name' => '人',
 				'name_kana' => 'ひと',
-				'related_photo_count' => 6,
+				'related_photo_count' => 3,
 			],
 			[
 				'name' => '空',
 				'name_kana' => 'そら',
-				'related_photo_count' => 7,
+				'related_photo_count' => 1,
 			],
 		];
 

@@ -28,11 +28,26 @@ class PhotoListController extends Controller
 		$photo_service = new PhotoService();
 		$photo_list = null;
 		if ('tag_all' === $tag && is_null($period) ) {
+			// タグも期間も指定せずに新着順でソートして検索
 			$photo_list = $photo_service->getPaginationSortDesc(self::PAGINATION_COUNT);
 		} else {
 			// 総合人気の時はクエリの都合上中身を空にする
 			$tmp_period = ('total' === $period) ? '' : $period;
-			$photo_list = $photo_service->getPaginationByPeriod(self::PAGINATION_COUNT, $tmp_period);
+
+			$photo_list = null;
+			if ('tag_all' === $tag) {
+				// タグは指定せず期間のみで検索
+				$photo_list = $photo_service->getPaginationByPeriod(self::PAGINATION_COUNT, $tmp_period);
+			} else {
+				if (is_null($period)) {
+					// 新着順でソートしてタグで検索
+					$photo_list = $photo_service->getPaginationSortByTag(self::PAGINATION_COUNT, $tag);
+				} else {
+					// タグと期間で検索
+					$photo_list = $photo_service->getPaginationByPeriodAndTag(self::PAGINATION_COUNT, $tag, $tmp_period);
+				}
+			}
+
 		}
 
 		return view('photoList', compact('photo_list', 'tag', 'period'));

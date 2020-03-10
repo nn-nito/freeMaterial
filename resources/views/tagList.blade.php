@@ -15,7 +15,7 @@
                         <p style="text-align: center; font-size: 140%"><strong>{{ $key }}</strong></p>
                         @foreach($tag as $item)
                             <div class="tagtag">
-                                <a href="#" style="text-align: center; font-size: 110%">
+                                <a href="{{ action('PhotoListController@index', [$item->name, 'total']) }}" style="text-align: center; font-size: 110%">
                                     {{ $item->name }} ({{$item->related_photo_count}})
                                 </a>
                             </div>

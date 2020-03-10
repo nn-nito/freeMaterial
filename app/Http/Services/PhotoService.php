@@ -125,4 +125,33 @@ class PhotoService
 	{
 		return $this->photo_handler->fetchPaginationByPeriod($pagination_count, $period);
 	}
+
+
+
+	/**
+	 * 期間とタグでフィルタリングして人気の写真をページネーションで取得
+	 *
+	 * @param int $pagination_count
+	 * @param string $tag
+	 * @param string $period '':総ダウンロード数 weekly:週間ダウンロード数 monthly:月間ダウンロード数
+	 * @return LengthAwarePaginator
+	 */
+	public function getPaginationByPeriodAndTag(int $pagination_count, string $tag, string $period = ''): LengthAwarePaginator
+	{
+		return $this->photo_handler->fetchPaginationByPeriodAndTag($pagination_count, $tag, $period);
+	}
+
+
+
+	/**
+	 * タグでフィルタリングして新着順でページネーションを取得
+	 *
+	 * @param int    $pagination_count
+	 * @param string $tag
+	 * @return LengthAwarePaginator
+	 */
+	public function getPaginationSortByTag(int $pagination_count, string $tag): LengthAwarePaginator
+	{
+		return $this->photo_handler->fetchPaginationSortByTag($pagination_count, $tag);
+	}
 }

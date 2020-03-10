@@ -17,6 +17,7 @@ class PhotoTagsTable extends Migration
 			$table->id();
 			$table->unsignedBigInteger('photo_id');
 			$table->unsignedBigInteger('tag_id');
+			$table->string('name');
 			$table->timestamps();
 
 			$table->foreign('photo_id')->references('id')->on('photos');
