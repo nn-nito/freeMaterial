@@ -16,7 +16,7 @@
                     <a href="{{ action('PhotoListController@index', ['tag_all']) }}" class="btn-top-radius mx-1">画像一覧</a>
                     <a href="{{ action('TagListController@index') }}" class="btn-top-radius mx-1">タグ一覧</a>
                     <a href="{{ action('InfoListController@index') }}" class="btn-top-radius mx-1">お知らせ一覧</a>
-                    <a href="#" class="btn-top-radius mx-1">サイトについて</a>
+                    <a href="{{ action('AboutWebsiteController@index') }}" class="btn-top-radius mx-1">サイトについて</a>
                 </p>
             </div>
             <form method="POST" class="form-inline" style="margin: 30px;" action="{{action('PhotoListController@search')}}">

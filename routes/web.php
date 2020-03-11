@@ -21,3 +21,4 @@ Route::get('/infos/{id}/detail', 'InfoDetailController@index')->name('info_detai
 Route::get('/photos/{tag}/{period?}', 'PhotoListController@index')->name('photo_list');
 Route::post('/photos', 'PhotoListController@search')->name('search_photo_list');
 Route::get('/tags', 'TagListController@index')->name('tag_list');
+Route::get('/about', 'AboutWebsiteController@index')->name('about_website');
