@@ -22,3 +22,6 @@ Route::get('/photos/{tag}/{period?}', 'PhotoListController@index')->name('photo_
 Route::post('/photos', 'PhotoListController@search')->name('search_photo_list');
 Route::get('/tags', 'TagListController@index')->name('tag_list');
 Route::get('/about', 'AboutWebsiteController@index')->name('about_website');
+
+// 管理画面
+Route::get('/admin8fjdodifejf5nl2uhf/home', 'Admin\AdminHomeController@index')->name('admin_home');
