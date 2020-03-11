@@ -105,22 +105,9 @@
                 <h3><span>人気のタグ</span></h3>
             </div>
             <div class="tagtag">
-                <a href="#">風景</a>
-                <a href="#">自然</a>
-                <a href="#">Success</a>
-                <a href="#">Success</a>
-                <a href="#">Success</a>
-                <a href="#">Success</a>
-                <a href="#">Success</a>
-                <a href="#">Dark</a>
-                <a href="#">Dark</a>
-                <a href="#">Dark</a>
-                <a href="#">Dark</a>
-                <a href="#">Dark</a>
-                <a href="#">Dark</a>
-                <a href="#">Dark</a>
-                <a href="#">Dark</a>
-                <a href="#">Dark</a>
+                @foreach($tags as $tag)
+                    <a href="{{ action('PhotoListController@index', [$tag->name, 'total']) }}">{{ $tag->name }} ({{ $tag->related_photo_count }})</a>
+                @endforeach
             </div>
         </div>
     </div>

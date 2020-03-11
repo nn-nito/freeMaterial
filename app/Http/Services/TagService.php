@@ -9,6 +9,8 @@
 namespace App\Http\Services;
 
 use App\Http\Handlers\TagHandler;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class TagService
@@ -79,5 +81,18 @@ class TagService
 		}
 
 		return $div;
+	}
+
+
+
+	/**
+	 * 人気順でソートしてコレクションですべて取得
+	 *
+	 * @param int $limit
+	 * @return Builder[]|Collection
+	 */
+	public function getAllCollectionBySortPopular(int $limit)
+	{
+		return $this->tag_handler->fetchAllCollectionBySortPopular($limit);
 	}
 }

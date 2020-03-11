@@ -47,4 +47,20 @@ class TagHandler
 			->orderBy('name_kana')
 			->get();
 	}
+
+
+
+	/**
+	 * 人気順でソートしてコレクションですべて取得
+	 *
+	 * @param int $limit
+	 * @return Builder[]|Collection
+	 */
+	public function fetchAllCollectionBySortPopular(int $limit)
+	{
+		return $this->tag::query()
+			->orderByDesc('related_photo_count')
+			->limit($limit)
+			->get();
+	}
 }

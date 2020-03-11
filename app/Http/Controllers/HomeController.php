@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\InfoService;
 use App\Http\Services\PhotoService;
+use App\Http\Services\TagService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -31,6 +32,10 @@ class HomeController extends Controller
         // 人気の写真を取得
 		$popular_photos = $photo_service->getCollectionByPeriod('', 5);
 
-        return view('home', compact('infos', 'photos', 'popular_photos'));
+		// タグを取得
+		$tag_service = new TagService();
+		$tags = $tag_service->getAllCollectionBySortPopular(30);
+
+        return view('home', compact('infos', 'photos', 'popular_photos', 'tags'));
     }
 }
