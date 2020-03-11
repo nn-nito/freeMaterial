@@ -18,6 +18,7 @@ class AboutWebsiteController extends Controller
 	 */
     public function index()
 	{
-		return view('aboutWebsite', compact(''));
+		$a = 1;
+		return view('aboutWebsite', compact('a'));
 	}
 }
