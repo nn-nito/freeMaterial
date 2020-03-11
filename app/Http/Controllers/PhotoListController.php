@@ -19,7 +19,7 @@ class PhotoListController extends Controller
 
 
 	/**
-	 * @param string $tag
+	 * @param string      $tag
 	 * @param string|null $period
 	 * @return Factory|View
 	 */
@@ -27,7 +27,7 @@ class PhotoListController extends Controller
 	{
 		$photo_service = new PhotoService();
 		$photo_list = null;
-		if ('tag_all' === $tag && is_null($period) ) {
+		if ('tag_all' === $tag && is_null($period)) {
 			// タグも期間も指定せずに新着順でソートして検索
 			$photo_list = $photo_service->getPaginationSortDesc(self::PAGINATION_COUNT);
 		} else {
@@ -49,6 +49,24 @@ class PhotoListController extends Controller
 			}
 
 		}
+
+		return view('photoList', compact('photo_list', 'tag', 'period'));
+	}
+
+
+
+	/**
+	 * @param Request $request
+	 * @return Factory|View
+	 */
+	public function search(Request $request)
+	{
+		$tag = $request->input('tag');
+		$period = 'total';
+
+		$photo_service = new PhotoService();
+		$photo_list = null;
+		$photo_list = $photo_service->getPaginationByPeriodAndTag(self::PAGINATION_COUNT, $tag, '');
 
 		return view('photoList', compact('photo_list', 'tag', 'period'));
 	}
