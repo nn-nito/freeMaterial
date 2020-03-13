@@ -29,9 +29,9 @@
     <header>Menu</header>
     <nav class="cp_sidebar_nav">
         <ul>
-            <li><a href="#"><i class="fa fa-home fa-fw"></i><span>Menu1</span></a>
+            <li><a href="#"><i class="fa fa-home fa-fw"></i><span>画像</span></a>
                 <ul class="cp_sidebar_2ndnav">
-                    <li><a href="#"><i class="fa fa-calendar fa-fw"></i>Menu1 2nd Menu1</a></li>
+                    <li><a href="{{action('Admin\AdminUploadPhotoController@index')}}"><i class="fa fa-calendar fa-fw"></i>S3アップロード</a></li>
                     <li><a href="#"><i class="fa fa-calendar-minus-o fa-fw"></i>Menu1 2nd Menu2</a></li>
                     <li><a href="#"><i class="fa fa-calendar-times-o fa-fw"></i>Menu1 2nd Menu3</a></li>
                     <li><a href="#"><i class="fa fa-calendar-plus-o fa-fw"></i>Menu1 2nd Menu4</a></li>
@@ -65,6 +65,11 @@
 </div>
 
 <main role="main">
+    {{-- ホーム --}}
+    @yield('home')
+    {{-- 写真アップロード --}}
+    @yield('upload_photo')
+
 </main>
 
 <!-- フッター -->
