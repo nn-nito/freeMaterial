@@ -15,12 +15,17 @@
             <div class="row">
                 <div class="col-6">
                     <form action="{{ action('Admin\AdminUploadPhotoController@create') }}" method="post" enctype="multipart/form-data" class="form-group">
-                        <input type="text" name="user_id" placeholder="ユーザーID 管理者の場合1" class="form-control">
-                        <input type="text" name="tags" placeholder="タグ ,で区切る" class="form-control">
-                        <input type="text" name="tags_kana" placeholder="タグ(ふりがな) ,で区切る" class="form-control">
-                        <input type="text" name="description" placeholder="説明 HTMLエスケープしない 空にできるだけしない" class="form-control">
-                        <input type="text" name="resolution" placeholder="解像度 例）1024×1024" class="form-control">
-                        <input type="file" name="photo" class="form-control-file">
+                        <label for="user_id">ユーザーID</label>
+                        <input type="text" required name="user_id" placeholder="ユーザーID 管理者の場合1" class="form-control">
+                        <label for="tags">タグ</label>
+                        <input type="text" required name="tags" placeholder="タグ ,で区切る" class="form-control">
+                        <label for="tags_kana">タグのふりがな</label>
+                        <input type="text" required name="tags_kana" placeholder="タグ(ふりがな) ,で区切る" class="form-control">
+                        <label for="description">説明</label>
+                        <input type="text" required name="description" placeholder="説明 HTMLエスケープしない 空にできるだけしない" class="form-control">
+                        <label for="resolution">解像度</label>
+                        <input type="text" required name="resolution" placeholder="解像度 例）1024×1024" class="form-control">
+                        <input type="file" required name="photo" class="form-control-file">
                         <input type="submit" value="アップロード" class="btn btn-primary">
                         {{ csrf_field() }}
                     </form>
