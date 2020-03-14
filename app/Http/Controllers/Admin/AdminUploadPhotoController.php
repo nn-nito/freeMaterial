@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\PhotoCreator;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 /**
@@ -39,10 +40,17 @@ class AdminUploadPhotoController extends Controller
 		$input['description'] = $request->input('description', null);
 		$input['resolution'] = $request->input('resolution');
 
-		// 写真をデータベースに保存しS3に投稿(photos)
-		$photo_creator = PhotoCreator::create();
-		$photo = $photo_creator->execute($input);
-		// タグを保存(tags、photo_tags)
+		// 写真をS3に投稿しDBに保存
+		DB::beginTransaction();
+		try {
+			$photo_creator = PhotoCreator::create();
+			$photo = $photo_creator->execute($input);
+			// タグを保存(tags、photo_tags)
+			DB::commit();
+		} catch (\Exception $exception) {
+			DB::rollBack();
+			throw new $exception;
+		}
 
 		return view('admin.uploadPhoto', compact('photo'));
 	}
