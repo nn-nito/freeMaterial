@@ -7,19 +7,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Photo extends Model
 {
-	protected $fillable = [
-		'download_count',
-	];
+	/**
+	 * @var array
+	 */
+	protected $guarded = [];
 
 
 
-    /**
-     * Userを取得
-     *
-     * @return BelongsTo
-     */
-    public function User()
-    {
-        return $this->belongsTo(User::class);
-    }
+	/**
+	 * Userを取得
+	 *
+	 * @return BelongsTo
+	 */
+	public function User()
+	{
+		return $this->belongsTo(User::class);
+	}
 }

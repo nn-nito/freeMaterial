@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="box11">
                                     <span>
-                                        {{ $photo_detail['description'] }}
+                                        {!! $photo_detail['description'] !!}
                                     </span>
                                 </div>
                             </div>

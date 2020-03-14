@@ -185,4 +185,18 @@ class PhotoHandler
 			->orderByDesc('photos.created_at')
 			->paginate($pagination_count);
 	}
+
+
+
+	/**
+	 * データ保存
+	 *
+	 * @param array $input
+	 * @return Builder|Model
+	 */
+	public function create(array $input)
+	{
+		return $this->photo::query()
+			->create($input);
+	}
 }
