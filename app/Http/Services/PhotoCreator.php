@@ -45,7 +45,7 @@ class PhotoCreator
 	 *
 	 * @return PhotoCreator
 	 */
-	public static function create()
+	public static function create(): self
 	{
 		return new self(
 			new PhotoHandler(),

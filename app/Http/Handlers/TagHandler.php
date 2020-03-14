@@ -11,6 +11,7 @@ namespace App\Http\Handlers;
 use App\Tag;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TagHandler
@@ -62,5 +63,47 @@ class TagHandler
 			->orderByDesc('related_photo_count')
 			->limit($limit)
 			->get();
+	}
+
+
+
+	/**
+	 * 関連する写真数をインクリメントするかインサート
+	 *
+	 * @param string $tag
+	 * @param string $tag_kana
+	 * @return bool|Builder|Model
+	 */
+	public function incrementOrCreateByName(string $tag, string $tag_kana)
+	{
+		$count = $this->tag::query()
+			->where('name', $tag)
+			->increment('related_photo_count');
+
+		if (0 < $count) {
+			return true;
+		}
+
+		return $this->tag::query()
+			->create([
+				'name' => $tag,
+				'name_kana' => $tag_kana,
+				'related_photo_count' => 1,
+			]);
+	}
+
+
+
+	/**
+	 * 名前に紐づくデータを取得
+	 *
+	 * @param string $name
+	 * @return Builder|Model|object|null
+	 */
+	public function fetchByName(string $name)
+	{
+		return $this->tag::query()
+			->where('name', $name)
+			->first();
 	}
 }

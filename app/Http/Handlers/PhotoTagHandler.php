@@ -9,6 +9,8 @@
 namespace App\Http\Handlers;
 
 use App\PhotoTag;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class PhotoTagHandler
@@ -30,5 +32,19 @@ class PhotoTagHandler
 	public function __construct()
 	{
 		$this->photo_tag = new PhotoTag();
+	}
+
+
+
+	/**
+	 * 作成
+	 *
+	 * @param array $input
+	 * @return Builder|Model
+	 */
+	public function create(array $input)
+	{
+		return $this->photo_tag::query()
+			->create($input);
 	}
 }

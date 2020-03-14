@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\PhotoCreator;
+use App\Http\Services\TagCreator;
+use App\Photo;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 /**
@@ -28,7 +33,7 @@ class AdminUploadPhotoController extends Controller
 
 	/**
 	 * @param Request $request
-	 * @return Factory|View
+	 * @return ResponseFactory|Factory|Response|View
 	 */
 	public function create(Request $request)
 	{
@@ -42,14 +47,21 @@ class AdminUploadPhotoController extends Controller
 
 		// 写真をS3に投稿しDBに保存
 		DB::beginTransaction();
+		$photo = null;
 		try {
 			$photo_creator = PhotoCreator::create();
+			/** @var Photo $photo */
 			$photo = $photo_creator->execute($input);
 			// タグを保存(tags、photo_tags)
+			TagCreator::create()->execute($input, $photo);
 			DB::commit();
 		} catch (\Exception $exception) {
 			DB::rollBack();
-			throw new $exception;
+			// TODO:とりあえず、、、、
+			if (false === is_null($photo)) {
+				Storage::disk('s3')->delete($photo->filename);
+			}
+			return response(['message' => $exception->getMessage()], 404);
 		}
 
 		return view('admin.uploadPhoto', compact('photo'));
