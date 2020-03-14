@@ -19,7 +19,7 @@ class AdminUploadPhotoController extends Controller
 	 */
 	public function index()
 	{
-    	return view('admin.uploadPhoto');
+		return view('admin.uploadPhoto');
 	}
 
 
@@ -30,6 +30,9 @@ class AdminUploadPhotoController extends Controller
 	 */
 	public function create(Request $request)
 	{
+		// 写真をデータベースに保存しS3に投稿(photos)
+		// タグを保存(tags、photo_tags)
+
 		return view('admin.uploadPhoto');
 	}
 }
