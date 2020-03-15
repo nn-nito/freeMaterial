@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="box11">
                                     <span>
-                                        {!! $photo_detail['description'] !!}
+                                        {!! nl2br($photo_detail['description'], false) !!}
                                     </span>
                                 </div>
                             </div>

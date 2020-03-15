@@ -45,7 +45,7 @@
                     </h3>
                 </div>
                 <div class="card-body" style="font-size: 130%;">
-                    <span>{!! $info->body !!}</span>
+                    <span>{!! nl2br($info->body, false) !!}</span>
                     @if (false === isset($info->body))
                         <span style="display: inline-block; width: 100%; text-align: center; font-size: 180%;">
                             詳細無し

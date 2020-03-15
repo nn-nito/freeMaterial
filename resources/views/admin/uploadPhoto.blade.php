@@ -21,8 +21,8 @@
                         <input type="text" required name="tags" placeholder="タグ ,で区切る" class="form-control">
                         <label for="tags_kana">タグのふりがな</label>
                         <input type="text" required name="tags_kana" placeholder="タグ(ふりがな) ,で区切る" class="form-control">
-                        <label for="description">説明</label>
-                        <input type="text" required name="description" placeholder="説明 HTMLエスケープしない 空にできるだけしない" class="form-control">
+                        <label for="description">説明 【brで改行】</label>
+                        <textarea type="text" required name="description" placeholder="説明 HTMLエスケープしない 空にできるだけしない" class="form-control"></textarea>
                         <label for="resolution">解像度</label>
                         <input type="text" required name="resolution" placeholder="解像度 例）1024×1024" class="form-control">
                         <input type="file" required name="photo" class="form-control-file">

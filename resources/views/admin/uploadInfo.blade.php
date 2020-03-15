@@ -15,7 +15,7 @@
             <form action="{{ action('Admin\AdminUploadInfoController@create') }}" method="post" class="form-group">
                 <label for="title">タイトル</label>
                 <input type="text" required id="title" class="form-control">
-                <label for="body">内容【改行は\r\n 空白はスペース】</label>
+                <label for="body">内容【改行はbr 空白はスペース】</label>
                 <textarea required id="body" class="form-control"></textarea>
                 <label for="target-date">お知らせの対象の日時 例)2020-10-10</label>
                 <input type="text" required id="target-date" class="form-control">
