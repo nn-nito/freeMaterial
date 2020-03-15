@@ -25,7 +25,7 @@ class PhotoListController extends Controller
 	 */
 	public function index(string $tag, ?string $period = null)
 	{
-		$photo_service = new PhotoService();
+		$photo_service = PhotoService::create();
 		$photo_list = null;
 		if ('tag_all' === $tag && is_null($period)) {
 			// タグも期間も指定せずに新着順でソートして検索
@@ -64,7 +64,7 @@ class PhotoListController extends Controller
 		$tag = $request->input('tag');
 		$period = 'total';
 
-		$photo_service = new PhotoService();
+		$photo_service = PhotoService::create();
 		$photo_list = null;
 		$photo_list = $photo_service->getPaginationByPeriodAndTag(self::PAGINATION_COUNT, $tag, '');
 

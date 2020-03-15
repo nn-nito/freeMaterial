@@ -40,11 +40,28 @@ class TagService
 
 
 	/**
-	 * TagService constructor.
+	 * デフォルト構成でインスタンス生成
+	 *
+	 * @return TagService
 	 */
-	public function __construct()
+	public static function create(): self
 	{
-		$this->tag_handler = new TagHandler();
+		return new self(
+			new TagHandler()
+		);
+	}
+
+
+
+	/**
+	 * TagService constructor.
+	 *
+	 * @param TagHandler $tag_handler
+	 */
+	public function __construct(
+		TagHandler $tag_handler
+	) {
+		$this->tag_handler = $tag_handler;
 	}
 
 

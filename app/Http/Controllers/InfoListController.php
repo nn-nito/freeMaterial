@@ -24,7 +24,7 @@ class InfoListController extends Controller
 	 */
 	public function index()
 	{
-		$info_service = new InfoService();
+		$info_service = InfoService::create();
 		$infos = $info_service->getPaginationByLatest(self::PAGINATION_COUNT);
 
 		return view('infoList', compact('infos'));

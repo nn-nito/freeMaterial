@@ -26,9 +26,29 @@ class DownloadPhotoService
 
 
 
-	public function __construct()
+	/**
+	 * デフォルト構成でインスタンス生成
+	 *
+	 * @return DownloadPhotoService
+	 */
+	public static function create(): self
 	{
-		$this->photo_handler = new PhotoHandler();
+		return new self(
+			new PhotoHandler()
+		);
+	}
+
+
+
+	/**
+	 * DownloadPhotoService constructor.
+	 *
+	 * @param PhotoHandler $photo_handler
+	 */
+	public function __construct(
+		PhotoHandler $photo_handler
+	) {
+		$this->photo_handler = $photo_handler;
 	}
 
 

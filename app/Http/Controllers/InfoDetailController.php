@@ -20,7 +20,7 @@ class InfoDetailController extends Controller
 	 */
     public function index(int $id)
 	{
-		$info_service = new InfoService();
+		$info_service = InfoService::create();
 		$info = $info_service->getModelById($id);
 
 		return view('infoDetail', compact('info'));

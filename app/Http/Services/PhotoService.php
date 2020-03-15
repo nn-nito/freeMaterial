@@ -9,15 +9,12 @@
 namespace App\Http\Services;
 
 use App\Http\Handlers\PhotoHandler;
-use App\Http\Handlers\PopularPhotoHandler;
 use App\Photo;
 use Carbon\Carbon;
-use Faker\Provider\DateTime;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Class PhotoService
@@ -34,11 +31,28 @@ class PhotoService
 
 
 	/**
-	 * PhotoService constructor.
+	 * デフォルト構成でインスタンス生成
+	 *
+	 * @return PhotoService
 	 */
-	public function __construct()
+	public static function create(): self
 	{
-		$this->photo_handler = new PhotoHandler();
+		return new self(
+			new PhotoHandler()
+		);
+	}
+
+
+
+	/**
+	 * PhotoService constructor.
+	 *
+	 * @param PhotoHandler $photo_handler
+	 */
+	public function __construct(
+		PhotoHandler $photo_handler
+	) {
+		$this->photo_handler = $photo_handler;
 	}
 
 
@@ -117,7 +131,7 @@ class PhotoService
 	/**
 	 * 期間でフィルタリングして人気の写真をページネーションで取得
 	 *
-	 * @param int $pagination_count
+	 * @param int    $pagination_count
 	 * @param string $period '':総ダウンロード数 weekly:週間ダウンロード数 monthly:月間ダウンロード数
 	 * @return LengthAwarePaginator
 	 */
@@ -131,7 +145,7 @@ class PhotoService
 	/**
 	 * 期間とタグでフィルタリングして人気の写真をページネーションで取得
 	 *
-	 * @param int $pagination_count
+	 * @param int    $pagination_count
 	 * @param string $tag
 	 * @param string $period '':総ダウンロード数 weekly:週間ダウンロード数 monthly:月間ダウンロード数
 	 * @return LengthAwarePaginator

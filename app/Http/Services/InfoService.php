@@ -21,30 +21,50 @@ use Illuminate\Database\Eloquent\Model;
  */
 class InfoService
 {
-    /**
-     * @var InfoHandler
-     */
-    private $info_handler;
+	/**
+	 * @var InfoHandler
+	 */
+	private $info_handler;
 
 
 
-    public function __construct()
-    {
-        $this->info_handler = new InfoHandler();
-    }
+	/**
+	 * デフォルト構成でインスタンス生成
+	 *
+	 * @return InfoService
+	 */
+	public static function create(): self
+	{
+		return new self(
+			new InfoHandler()
+		);
+	}
 
 
 
-    /**
-     * 最新のお知らせを指定した件数だけ取得
-     *
-     * @param int $count 取得する件数
-     * @return Builder[]|Collection
-     */
-    public function getCollectionByLatest(int $count)
-    {
-        return $this->info_handler->fetchCollectionByLatest($count);
-    }
+	/**
+	 * InfoService constructor.
+	 *
+	 * @param InfoHandler $info_handler
+	 */
+	public function __construct(
+		InfoHandler $info_handler
+	) {
+		$this->info_handler = $info_handler;
+	}
+
+
+
+	/**
+	 * 最新のお知らせを指定した件数だけ取得
+	 *
+	 * @param int $count 取得する件数
+	 * @return Builder[]|Collection
+	 */
+	public function getCollectionByLatest(int $count)
+	{
+		return $this->info_handler->fetchCollectionByLatest($count);
+	}
 
 
 

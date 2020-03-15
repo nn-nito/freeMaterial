@@ -15,7 +15,7 @@ class PhotoDetailController extends Controller
      */
     public function index(int $id)
     {
-        $photo_service = new PhotoService();
+        $photo_service = PhotoService::create();
         // 写真IDに紐づく写真の詳細を取得
         $photo_detail = $photo_service->getPhotoDetail($id);
 

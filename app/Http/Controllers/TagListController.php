@@ -19,7 +19,7 @@ class TagListController extends Controller
 	 */
     public function index()
 	{
-		$tag_service = new TagService();
+		$tag_service = TagService::create();
 		$tags = $tag_service->getFromAToO();
 
 		return view('tagList', compact('tags'));

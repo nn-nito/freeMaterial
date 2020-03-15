@@ -22,7 +22,7 @@ class DownloadPhotoController extends Controller
 	 */
 	public function index(int $id)
 	{
-		$download_photo_service = new DownloadPhotoService();
+		$download_photo_service = DownloadPhotoService::create();
 		DB::beginTransaction();
 		try {
 			$response_param = $download_photo_service->buildResponse($id);
