@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Console\Commands\InitializeDownloadCountMonthly;
+use App\Console\Commands\InitializeDownloadCountWeekly;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        InitializeDownloadCountMonthly::class,
+		InitializeDownloadCountWeekly::class,
     ];
 
     /**

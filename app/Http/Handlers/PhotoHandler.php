@@ -199,4 +199,21 @@ class PhotoHandler
 		return $this->photo::query()
 			->create($input);
 	}
+
+
+
+	/**
+	 * ダウンロード数をアップデート
+	 *
+	 * @param string $initializing_target_column
+	 * @param int    $count
+	 * @return int
+	 */
+	public function updateByDownloadCount(string $initializing_target_column, int $count)
+	{
+		return $this->photo::query()
+			->update([
+				$initializing_target_column => $count,
+			]);
+	}
 }

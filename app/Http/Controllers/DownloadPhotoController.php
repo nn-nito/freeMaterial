@@ -25,7 +25,7 @@ class DownloadPhotoController extends Controller
 		if (0 >= $id) {
 			abort(404);
 		}
-		
+
 		$download_photo_service = DownloadPhotoService::create();
 		$response_param = [];
 		DB::beginTransaction();
