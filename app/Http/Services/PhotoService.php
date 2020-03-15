@@ -85,8 +85,8 @@ class PhotoService
 		$user = $photo->User;
 
 		/** @var \DateTime $user_created_at */
-		$user_created_at = $user->created_at;
-		$post_date = $user_created_at->format('Y/m/d h:i');
+		$photo_created_at = $photo->created_at;
+		$post_date = $photo_created_at->format('Y/m/d h:i');
 		$photo_detail = [
 			'url' => $photo->url,
 			'user_name' => $user->name,
