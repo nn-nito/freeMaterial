@@ -21,7 +21,7 @@
             <form method="POST" class="form-inline" style="margin: 30px;" action="{{action('PhotoListController@search')}}">
                 {{ csrf_field() }}
                 <div class="input-group" style="margin: 0 auto; background-color: #6c757d">
-                    <input type="text" class="form-control" name="tag">
+                    <input type="text" required class="form-control" name="tag" placeholder="タグを入力 例）夜景">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-dark">検索</button>
                     </div>

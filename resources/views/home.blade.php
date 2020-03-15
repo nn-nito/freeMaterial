@@ -22,7 +22,7 @@
             <form method="POST" class="form-inline" style="margin: 30px;" action="{{action('PhotoListController@search')}}">
                 {{ csrf_field() }}
                 <div class="input-group" style="margin: 0 auto; background-color: #6c757d">
-                    <input type="text" class="form-control" name="tag">
+                    <input type="text" required class="form-control" name="tag" placeholder="タグを入力 例）夜景">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-dark">検索</button>
                     </div>
@@ -80,7 +80,6 @@
                             <a href="{{ action('InfoDetailController@index', [$info->id]) }}">
                                 @isset($info->target_date)
                                     {{ $info->target_date }}
-                                    &nbsp;&nbsp;
                                 @endisset
                                 <strong>{{ $info->title }}</strong>
                             </a>
@@ -108,6 +107,11 @@
                 @foreach($tags as $tag)
                     <a href="{{ action('PhotoListController@index', [$tag->name, 'total']) }}">{{ $tag->name }} ({{ $tag->related_photo_count }})</a>
                 @endforeach
+            </div>
+            <div class="d-flex justify-content-center">
+                <a href="{{ action('TagListController@index') }}" class="btn-border-bottom">
+                    <span>もっと見る</span>
+                </a>
             </div>
         </div>
     </div>
