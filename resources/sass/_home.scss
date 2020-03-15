@@ -19,7 +19,7 @@ a {
 
 /* ジャンボトロン */
 :root {
-  --jumbotron-padding-y: 2rem;
+  --jumbotron-padding-y: 1rem;
 }
 
 .jumbotron {
@@ -47,6 +47,8 @@ a {
 
 .jumbotron .container {
   max-width: 40rem;
+  margin-top: -4%;
+  margin-bottom: -5%;
 }
 
 .badge {
