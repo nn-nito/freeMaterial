@@ -42,6 +42,6 @@ class AdminUploadInfoController extends Controller
 		$info_creator = InfoCreator::create();
 		$info = $info_creator->execute($input);
 
-		return view('admin.uploadInfo');
+		return view('admin.uploadInfo', compact('info'));
 	}
 }

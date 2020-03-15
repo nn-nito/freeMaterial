@@ -12,6 +12,13 @@
             <div class="upload-info-title py-3">
                 <h2>お知らせをアップロード</h2>
             </div>
+            @isset($info)
+                @if(is_null($info))
+                    <div class="alert alert-danger" role="alert">投稿に失敗しました</div>
+                @else
+                    <div class="alert alert-success" role="alert">投稿に成功しました！</div>
+                @endif
+            @endisset
             <form action="{{ action('Admin\AdminUploadInfoController@create') }}" method="post" class="form-group">
                 <label for="title">タイトル</label>
                 <input type="text" required name="title" class="form-control">

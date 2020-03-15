@@ -12,6 +12,13 @@
             <div class="upload-photo-title py-3">
                 <h2>画像をアップロード</h2>
             </div>
+            @isset($photo)
+                @if(is_null($photo))
+                    <div class="alert alert-danger" role="alert">投稿に失敗しました</div>
+                @else
+                    <div class="alert alert-success" role="alert">投稿に成功しました！</div>
+                @endif
+            @endisset
             <div class="row">
                 <div class="col-6">
                     <form action="{{ action('Admin\AdminUploadPhotoController@create') }}" method="post" enctype="multipart/form-data" class="form-group">
