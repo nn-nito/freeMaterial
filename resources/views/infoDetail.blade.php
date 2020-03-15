@@ -11,7 +11,12 @@
         <div class="container">
             <div class="card card-2">
                 <div class="card-header bg-dark">
-                    <h3 style="text-align: center; font-weight: bold; color: #67c5ff;">{{ $info->title }}</h3>
+                    <h3 style="text-align: center; font-weight: bold; color: #67c5ff;">
+                        @isset($info->target_date)
+                            {{ $info->target_date }}
+                        @endisset
+                        {{ $info->title }}
+                    </h3>
                 </div>
                 <div class="card-body" style="font-size: 130%;">
                     <span>{!! $info->body !!}</span>

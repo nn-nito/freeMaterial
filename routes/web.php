@@ -25,5 +25,7 @@ Route::get('/about', 'AboutWebsiteController@index')->name('about_website');
 
 // 管理画面
 Route::get('/admin8fjdodifejf5nl2uhf/home', 'Admin\AdminHomeController@index')->name('admin_home');
-Route::get('/admin8fjdodifejf5nl2uhf/photo/upload', 'Admin\AdminUploadPhotoController@index')->name('admin_photo_upload');
-Route::post('/admin8fjdodifejf5nl2uhf/photo/upload', 'Admin\AdminUploadPhotoController@create')->name('admin_photo_create');
+Route::get('/admin8fjdodifejf5nl2uhf/photo/home', 'Admin\AdminUploadPhotoController@index')->name('admin_photo_home');
+Route::post('/admin8fjdodifejf5nl2uhf/photo/upload', 'Admin\AdminUploadPhotoController@create')->name('admin_photo_update');
+Route::get('/admin8fjdodifejf5nl2uhf/info/home', 'Admin\AdminUploadInfoController@index')->name('admin_info_home');
+Route::post('/admin8fjdodifejf5nl2uhf/info/upload', 'Admin\AdminUploadInfoController@create')->name('admin_info_update');

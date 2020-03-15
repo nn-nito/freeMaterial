@@ -2,7 +2,7 @@
 
 {{-- タイトル --}}
 @section('title')
-    管理Home
+    管理写真アップロード
 @endsection
 
 {{-- ホーム --}}

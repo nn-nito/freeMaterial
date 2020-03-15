@@ -26,12 +26,17 @@
 
 {{-- ヘッダー --}}
 <div class="cp_sidebar">
-    <header>Menu</header>
+    <header><a href="{{action('Admin\AdminHomeController@index')}}" style="color: #000000">Menu</a></header>
     <nav class="cp_sidebar_nav">
         <ul>
             <li><a href="#"><i class="far fa-image"></i><span>画像</span></a>
                 <ul class="cp_sidebar_2ndnav">
                     <li><a href="{{action('Admin\AdminUploadPhotoController@index')}}"><i class="far fa-caret-square-up"></i>S3アップロード</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="far fa-question-circle"></i><span>お知らせ</span></a>
+                <ul class="cp_sidebar_2ndnav">
+                    <li><a href="{{action('Admin\AdminUploadInfoController@index')}}"><i class="far fa-caret-square-up"></i>DBアップロード</a></li>
                 </ul>
             </li>
         </ul>
@@ -43,19 +48,9 @@
     @yield('home')
     {{-- 写真アップロード --}}
     @yield('upload_photo')
-
+    {{-- お知らせ --}}
+    @yield('upload_info')
 </main>
-
-<!-- フッター -->
-<footer class="text-muted">
-    <div class="container">
-        <div class="row">
-            <div class="c">
-                <p>写真館 &copy; blue</p>
-            </div>
-        </div>
-    </div>
-</footer>
 
 </body>
 </html>
