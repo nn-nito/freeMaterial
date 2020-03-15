@@ -79,4 +79,18 @@ class InfoHandler
 	{
 		return $this->info::query()->find($info_id);
 	}
+
+
+
+	/**
+	 * 作成
+	 *
+	 * @param array $input
+	 * @return Builder|Model
+	 */
+	public function create(array $input)
+	{
+		return $this->info::query()
+			->create($input);
+	}
 }

@@ -9,6 +9,8 @@
 namespace App\Http\Services;
 
 use App\Http\Handlers\InfoHandler;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class InfoCreator
@@ -47,5 +49,18 @@ class InfoCreator
 		InfoHandler $info_handler
 	) {
 		$this->info_handler = $info_handler;
+	}
+
+
+
+	/**
+	 * 実行
+	 *
+	 * @param array $input
+	 * @return Builder|Model
+	 */
+	public function execute(array $input)
+	{
+		return $this->info_handler->create($input);
 	}
 }
