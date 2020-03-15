@@ -60,9 +60,12 @@ class DownloadPhotoService
 	 * @return array
 	 * @throws FileNotFoundException
 	 */
-	public function buildResponse(int $photo_id)
+	public function buildResponse(int $photo_id): array
 	{
 		$photo = $this->photo_handler->fetchModelById($photo_id);
+		if (is_null($photo)) {
+			return [];
+		}
 		$filename = $photo->filename;
 		$disk = Storage::disk('s3');
 		$ex = substr($filename, -3);
@@ -91,7 +94,7 @@ class DownloadPhotoService
 	 * @param int $photo_id
 	 * @return int
 	 */
-	public function incrementDownloadCount(int $photo_id)
+	public function incrementDownloadCount(int $photo_id): int
 	{
 		return $this->photo_handler->incrementDownloadCount($photo_id);
 	}
