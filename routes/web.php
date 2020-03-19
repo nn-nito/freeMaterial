@@ -18,7 +18,7 @@ Route::get('/photos/{id}/detail', 'PhotoDetailController@index')->name('photo_de
 Route::get('/photos/{id}/download', 'DownloadPhotoController@index')->name('photo_download');
 Route::get('/infos', 'InfoListController@index')->name('info_list');
 Route::get('/infos/{id}/detail', 'InfoDetailController@index')->name('info_detail');
-Route::get('/photos/{tag}/{period?}', 'PhotoListController@index')->name('photo_list');
+Route::get('/photos/{tag?}/{period?}', 'PhotoListController@index')->name('photo_list');
 Route::post('/photos', 'PhotoListController@search')->name('search_photo_list');
 Route::get('/tags', 'TagListController@index')->name('tag_list');
 Route::get('/about', 'AboutWebsiteController@index')->name('about_website');

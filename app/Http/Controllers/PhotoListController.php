@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PhotoListInputPost;
 use App\Http\Services\PhotoService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
@@ -23,8 +24,12 @@ class PhotoListController extends Controller
 	 * @param string|null $period
 	 * @return Factory|View
 	 */
-	public function index(string $tag, ?string $period = null)
+	public function index(?string $tag = null, ?string $period = null)
 	{
+		if (is_null($tag)) {
+			abort(404);
+		}
+
 		$photo_service = PhotoService::create();
 		$photo_list = null;
 		if ('tag_all' === $tag && is_null($period)) {
@@ -56,10 +61,10 @@ class PhotoListController extends Controller
 
 
 	/**
-	 * @param Request $request
+	 * @param PhotoListInputPost $request
 	 * @return Factory|View
 	 */
-	public function search(Request $request)
+	public function search(PhotoListInputPost $request)
 	{
 		$tag = $request->input('tag');
 		$period = 'total';
