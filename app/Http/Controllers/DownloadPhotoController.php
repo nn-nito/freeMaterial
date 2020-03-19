@@ -37,6 +37,7 @@ class DownloadPhotoController extends Controller
 			$download_photo_service->incrementDownloadCount($id);
 			DB::commit();
 		} catch (\Exception $e) {
+			DB::rollBack();
 			abort(404);
 		}
 		return Response::make(

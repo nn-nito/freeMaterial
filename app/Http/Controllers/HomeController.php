@@ -22,7 +22,7 @@ class HomeController extends Controller
 	 *
 	 * @var int
 	 */
-	private const LATEST_PHOTO_PAGINATION_COUNT = 30;
+	private const LATEST_PHOTO_PAGINATION_COUNT = 12;
 	private const INFO_PAGINATION_COUNT = 5;
 	private const POPULAR_PHOTO_PAGINATION_COUNT = 5;
 	private const TAG_PAGINATION_COUNT = 30;
