@@ -9,7 +9,7 @@
 @section('jumbotron')
     <section class="jumbotron">
         <div class="container">
-            <h1 class="jumbotron-heading text-center">フリー素材画像</h1>
+            <h1 class="jumbotron-heading text-center">じゆう画像素材館</h1>
             <div class="title-row d-flex-column justify-content-end  text-center">
                 <p class="lead text-muted">自然・風景・夜景などを主が適当に撮った写真をまとめたサイトになります。なので公序良俗に反した使い方でなければいろいろな場面でお使いいただいても構いません。</p>
                 <p>

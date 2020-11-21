@@ -9,7 +9,7 @@
 @section('jumbotron')
     <section class="jumbotron">
         <div class="container">
-            <h1 class="jumbotron-heading text-center">フリー素材画像</h1>
+            <h1 class="jumbotron-heading text-center">じゆう画像素材館</h1>
             <div class="title-row d-flex-column justify-content-end  text-center">
                 <p>
                     <a href="{{ action('PhotoListController@index', ['tag_all']) }}" class="btn-top-radius mx-1">画像一覧</a>
